@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/cToolbar"
+        app:menu="@menu/menu_toolbar"
+        app:title="Calendar"
+        app:titleCentered="true"
+        app:titleTextColor="@color/cMainText" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:adjustViewBounds="true"-->
+    <!--        android:layout_below="@id/toolbar"-->
+    <!--        android:layout_above="@id/nav"-->
+    <!--        android:src="@drawable/first_img"-->
+    <!--        />-->
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nav"
+        android:layout_below="@id/toolbar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/nav"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/cToolbar"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/baseline_add_24"
+        app:fabSize="normal"
+        app:tint="@color/cMainText" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/cToolbar"
+        android:soundEffectsEnabled="true"
+        app:itemIconSize="25dp"
+        app:itemIconTint="@color/cMainText"
+        app:itemTextColor="@color/cMainText"
+        app:labelVisibilityMode="selected"
+        app:menu="@menu/navigation_menu" />
+</RelativeLayout>

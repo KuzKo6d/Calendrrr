@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/cAddBack"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cAddBack">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/addchelka"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/cAddMain"
+            app:navigationIcon="@drawable/baseline_arrow_back_24"
+            app:navigationIconTint="@color/cMainText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_url_input_"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addmemozavr"
+            android:hint="Кидай URL"
+            android:padding="10dp"
+            android:textColorHint="@color/cAddMain"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/cAddMain"
+            app:endIconDrawable="@drawable/baseline_arrow_forward_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/cAddMain"
+            app:hintTextColor="@color/cAddMain">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/image_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/addmemozavr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addchelka"
+            android:adjustViewBounds="true"
+            tools:src="@drawable/image_preview" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Прувеут"
+            android:textColor="@color/cMainText" />
+
+    </RelativeLayout>
+
+
+</ScrollView>
