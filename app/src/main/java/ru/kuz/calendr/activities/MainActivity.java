@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        getSupportFragmentManager().beginTransaction().
-                replace(binding.fragment.getId(), homeFragment)
-                .commit();
-
 
         adjustClickListener();
 
@@ -39,21 +35,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void adjustClickListener() {
+        getSupportFragmentManager().beginTransaction()
+                .add(binding.fragment.getId(), homeFragment)
+                .add(binding.fragment.getId(), searchFragment).hide(searchFragment)
+                .add(binding.fragment.getId(), historyFragment).hide(historyFragment)
+                .commit();
         binding.nav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.homePage) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(binding.fragment.getId(), homeFragment)
+                        .hide(searchFragment)
+                        .hide(historyFragment)
+                        .show(homeFragment)
                         .commit();
                 return true;
             } else if (id == R.id.searchPage) {
-                getSupportFragmentManager().beginTransaction().
-                        replace(binding.fragment.getId(), searchFragment)
+                getSupportFragmentManager().beginTransaction()
+                        .hide(historyFragment)
+                        .hide(homeFragment)
+                        .show(searchFragment)
                         .commit();
                 return true;
             } else {
-                getSupportFragmentManager().beginTransaction().
-                        replace(binding.fragment.getId(), historyFragment)
+                getSupportFragmentManager().beginTransaction()
+                        .hide(searchFragment)
+                        .hide(homeFragment)
+                        .show(historyFragment)
                         .commit();
                 return true;
             }

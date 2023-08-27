@@ -21,7 +21,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = HomeFragmentBinding.inflate(LayoutInflater.from(getContext()), container, false);
-        binding.recycler.setAdapter(new ScrollAdapter(getContext()));
+        binding.recycler.setAdapter(new ScrollAdapter());
 
         binding.recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         return binding.getRoot();

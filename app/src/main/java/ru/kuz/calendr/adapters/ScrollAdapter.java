@@ -18,7 +18,6 @@ import ru.kuz.calendr.R;
 import ru.kuz.calendr.models.Model;
 
 public class ScrollAdapter extends RecyclerView.Adapter<ScrollAdapter.ViewHolder> {
-    public Context context;
     public ArrayList<Model> models = new ArrayList<>();
 //                new Model("https://www.bethowen.ru/upload/iblock/9aa/9aa4890b29e34cf8705b90059bc6f73b.jpg", "Cinchilla"),
 //            new Model("https://www.bethowen.ru/upload/iblock/9aa/9aa4890b29e34cf8705b90059bc6f73b.jpg", "Cinchilla"),
@@ -26,8 +25,7 @@ public class ScrollAdapter extends RecyclerView.Adapter<ScrollAdapter.ViewHolder
 //            new Model("https://reparin.ru/wp-content/uploads/2022/06/%D1%88%D0%B8%D0%BD%D1%88%D0%B8%D0%BB%D0%BB%D0%B0.jpg.webp", "Chinchilla2"),
 //            new Model("https://reparin.ru/wp-content/uploads/2022/06/%D1%88%D0%B8%D0%BD%D1%88%D0%B8%D0%BB%D0%BB%D0%B0.jpg.webp", "Chinchilla2")
 
-    public ScrollAdapter(Context context) {
-        this.context = context;
+    public ScrollAdapter() {
         models.add(new Model("https://www.bethowen.ru/upload/iblock/9aa/9aa4890b29e34cf8705b90059bc6f73b.jpg", "Cinchilla"));
         models.add(new Model("https://www.bethowen.ru/upload/iblock/9aa/9aa4890b29e34cf8705b90059bc6f73b.jpg", "Cinchilla"));
         models.add(new Model("https://www.bethowen.ru/upload/iblock/9aa/9aa4890b29e34cf8705b90059bc6f73b.jpg", "Cinchilla"));
@@ -42,7 +40,7 @@ public class ScrollAdapter extends RecyclerView.Adapter<ScrollAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ScrollAdapter.ViewHolder holder, int position) {
-        holder.preferences(models.get(position), context);
+        holder.preferences(models.get(position));
         holder.clickListener(position, models, this);
     }
 
@@ -52,20 +50,22 @@ public class ScrollAdapter extends RecyclerView.Adapter<ScrollAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        public Context context;
         public ImageView scrollImage;
         public TextView scrollLabel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            context = itemView.getContext();
             scrollImage = itemView.findViewById(R.id.scroll_image);
             scrollLabel = itemView.findViewById(R.id.scroll_label);
 
         }
 
-        public void preferences(Model model, Context context) {
+        public void preferences(Model model) {
             scrollLabel.setText(model.label);
             Glide
-                    .with(context.getApplicationContext())
+                    .with(context)
                     .load(model.URL_image) //ссылка на изображение
                     .into(scrollImage); //куда кидать изображение
         }
